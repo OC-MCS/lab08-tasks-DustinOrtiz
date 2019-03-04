@@ -1,3 +1,4 @@
+
 #include "IntegerList.h"
 #include <iostream>
 using namespace std;
@@ -8,16 +9,27 @@ void display(IntegerList b)
 		cout << b.getElement(i) << endl;
 }
 
+void view(IntegerList c)
+{
+	for (int i = 0; i < c.getNumElements(); i++)
+		cout << c.getElement(i) << endl;
+}
+
 int main()
 {
 	const int SIZE = 5;
 	IntegerList a(SIZE);
+	IntegerList b(SIZE);
 
 	// just put some numbers in to test it
 	for (int i = 0; i < SIZE; i++)
 		a.setElement(i, i * 2);
 
+	b = a;
+
 	cout << "A's values:" << endl;
 	display(a);
-
+	cout << endl;
+	cout << "B's values:" << endl;
+	view(b);
 }

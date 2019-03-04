@@ -1,4 +1,4 @@
-// Implementation file for the IntegerList class.
+
 #include <iostream>
 #include <cstdlib>
 #include "IntegerList.h"
@@ -15,6 +15,36 @@ IntegerList::IntegerList(int size)
       list[ndx] = 0;
 }
 
+IntegerList::IntegerList(const IntegerList &other)
+{
+	numElements = other.numElements;
+	list = new int[numElements];
+	for (int i = 0; i < numElements; i++)
+	{
+		list[i] = other.list[i];
+	}
+}
+
+IntegerList::~IntegerList()
+{
+	delete[] list;
+}
+
+IntegerList IntegerList::operator=(const IntegerList &other)
+{
+	if (this != &other)
+	{
+		delete[] list;
+		numElements = other.numElements;
+		list = new int[numElements];
+		for (int i = 0; i < numElements; i++)
+		{
+			list[i] = other.list[i];
+		}
+	}
+
+	return *this;
+}
 
 //***********************************************************
 // isValid member function.                                 *
